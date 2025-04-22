@@ -13,6 +13,7 @@ function loaded() {
 
     if (path.includes("view-events.html")) {
         loadEvents();
+        setupEventFilter(); // Add the event filter functionality
     }
 
     if (path.includes("event-details.html")) {
@@ -90,7 +91,6 @@ function loadEvents() {
 
                 const row = document.createElement("tr");
                 row.innerHTML = `
-                    <td>${event.id}</td>
                     <td><a href="event-details.html?id=${event.id}">${event.title}</a></td>
                     <td>${event.date}</td>
                     <td>${formattedStartTime} - ${formattedEndTime}</td>
@@ -115,6 +115,21 @@ function formatTime(time) {
     const period = hours >= 12 ? "PM" : "AM";
     const formattedHours = hours % 12 || 12;
     return `${formattedHours}:${minutes.toString().padStart(2, "0")} ${period}`;
+}
+
+// Set up the event filter for the search bar
+function setupEventFilter() {
+    const searchBar = document.getElementById("search-bar");
+    const tableBody = document.getElementById("event-list").querySelector("tbody");
+
+    searchBar.addEventListener("input", function () {
+        const filterText = searchBar.value.toLowerCase();
+
+        Array.from(tableBody.rows).forEach(row => {
+            const rowText = Array.from(row.cells).map(cell => cell.textContent.toLowerCase()).join(" ");           
+            row.style.display = rowText.includes(filterText) ? "" : "none";
+        });
+    });
 }
 
 // Load a single event's details by ID
