@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar App</title>
+    <title>Add Event - PlanPal</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body id="add-event-page">
     <header>
         <nav>
             <a href="index.html" class="logo">
@@ -19,12 +19,45 @@
             </div>
         </nav>
     </header>
+
     <main>
-        <!-- Placeholder content -->
-        <h1>Add Event stub</h1>
+        <h1>Add Event</h1>
+        <form id="eventForm">
+            <div>
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" placeholder="Event Title">
+            </div>
+            <div>
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date">
+            </div>
+            <div class="time-fields">
+                <div>
+                    <label for="startTime">Start Time</label>
+                    <input type="time" id="startTime" name="startTime">
+                </div>
+                <div>
+                    <label for="endTime">End Time</label>
+                    <input type="time" id="endTime" name="endTime">
+                </div>
+            </div>
+            <div>
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location" placeholder="Location">
+            </div>
+            <div>
+                <label for="description">Description</label>
+                <textarea id="description" name="description" placeholder="Type here"></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="message" style="margin-top: 1rem; font-weight: bold;"></div>
     </main>
+
     <footer>
         <p>&copy; 2025 PlanPal</p>
     </footer>
+
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>

@@ -63,3 +63,104 @@ footer {
   left: 0;
   width: 100%;
 }
+
+#home-page main {
+  max-width: 1500px;
+  margin: 2rem auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+#add-event-page main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+#add-event-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#add-event-page label {
+  text-align: left;
+  font-weight: bold;
+}
+
+#add-event-page input, textarea {
+  padding: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#add-event-page .time-fields {
+  display: flex;
+  gap: 1rem;
+}
+
+#add-event-page .time-fields input {
+  flex: 1;
+}
+
+#add-event-page button {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+#add-event-page button:hover {
+  background-color: #8a7d7d;
+}
+
+#view-events-page main {
+  max-width: 2000px;
+  margin: 2rem auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+#view-events-pagee table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+#view-events-page table th, table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+#view-events-page table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+#view-events-page table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#view-events-page table tr:hover {
+  background-color: #f1f1f1;
+}
+
+#view-events-page button {
+  padding: 0.5rem 1rem;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#view-events-page button:hover {
+  background-color: #ff1a1a;
+}
+
+#event-details-page main {
+  max-width: 2000px;
+  margin: 2rem auto;
+  padding: 1rem;
+  text-align: center;
+}
