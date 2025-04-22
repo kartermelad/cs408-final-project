@@ -1,3 +1,7 @@
+body {
+  background-color: #fdfdfd;
+}
+
 header {
   background-color: #ffcccc;
   padding: 1rem;
@@ -159,8 +163,50 @@ footer {
 }
 
 #event-details-page main {
-  max-width: 2000px;
+  max-width: 800px;
   margin: 2rem auto;
-  padding: 1rem;
+  padding: 2rem;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+#event-details-page h1 {
   text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#event-details-page .event-container {
+  padding: 1rem;
+  line-height: 1.6;
+}
+
+#event-details-page #event-details {
+  margin-bottom: 2rem;
+}
+
+#event-details-page .event-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+#event-details-page .event-detail strong {
+  color: #e60000;
+  font-weight: bold;
+  flex: 1;
+}
+
+#event-details-page .event-detail span {
+  flex: 2;
+  text-align: right;
+  color: #555;
 }

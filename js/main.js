@@ -146,7 +146,7 @@ function loadEventDetails() {
 
             document.getElementById("event-title").textContent = event.title;
             document.getElementById("event-date").textContent = event.date;
-            document.getElementById("event-time").textContent = `${event.startTime} - ${event.endTime}`;
+            document.getElementById("event-time").textContent = `${formatTime(event.startTime)} - ${formatTime(event.endTime)}`;
             document.getElementById("event-location").textContent = event.location;
             document.getElementById("event-description").textContent = event.description;
         } else {
