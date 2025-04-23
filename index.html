@@ -17,7 +17,7 @@
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,listWeek'
           },
-          showNonCurrentDates: false, // ✅ hides prev/next month overflow
+          showNonCurrentDates: false,
           events: function(fetchInfo, successCallback, failureCallback) {
             fetch("https://f18r15nee0.execute-api.us-west-1.amazonaws.com/items")
               .then(response => response.json())
