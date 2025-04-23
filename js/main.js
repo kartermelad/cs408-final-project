@@ -13,7 +13,7 @@ function loaded() {
 
     if (path.includes("view-events.html")) {
         loadEvents();
-        setupEventFilter(); // Add the event filter functionality
+        setupEventFilter();
     }
 
     if (path.includes("event-details.html")) {
