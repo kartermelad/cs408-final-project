@@ -10,6 +10,8 @@
   --table-row-hover: #f1f1f1;
   --input-background: #fff;
   --input-text-color: #333;
+  --h1-text-color: #000000;
+
 }
 
 /* Dark Mode Variables */
@@ -24,6 +26,7 @@
   --table-row-hover: #2a2a2a;
   --input-background: #2d2d2d;
   --input-text-color: #d4d4d4;
+  --h1-text-color: #ffffff;
 }
 
 /* Global Styles */
@@ -34,6 +37,23 @@ body {
   padding: 0;
   font-family: Arial, sans-serif;
   transition: background-color 0.3s, color 0.3s;
+}
+
+/* Shadow Dance Effect for H1 Headers */
+#home-page h1 {
+  font-size: 4rem; /* Adjust size as needed */
+  color: var(--h1-text-color);
+  text-shadow: 5px 5px 0 #ff005e, 10px 10px 0 #00d4ff;
+  animation: shadow-dance 2s infinite;
+}
+
+@keyframes shadow-dance {
+  0%, 100% {
+    text-shadow: 5px 5px 0 #ff005e, 10px 10px 0 #00d4ff;
+  }
+  50% {
+    text-shadow: -5px -5px 0 #00d4ff, -10px -10px 0 #ff005e;
+  }
 }
 
 a {
@@ -253,18 +273,22 @@ table tr:hover {
   text-align: right;
 }
 
-/* Dark Mode Toggle Button with Liquid Fill Effect */
+/* Dark Mode Toggle Button Container */
 .dark-mode-container {
+  position: absolute; /* Position the container absolutely */
+  top: 10rem; /* Move it to the top */
+  right: 3rem; /* Move it to the right */
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 1rem 0;
+  margin: 0; /* Remove any extra margin */
 }
 
+/* Dark Mode Toggle Button */
 .btn {
   position: relative;
-  padding: 1rem 2rem;
-  font-size: 1rem;
+  padding: 0.5rem 1rem; /* Make the button smaller */
+  font-size: 0.9rem; /* Reduce font size */
   font-weight: 600;
   color: #007bff;
   background: none;
