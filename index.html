@@ -5,8 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Calendar App</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid/main.min.css" rel="stylesheet">   
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid/main.min.css" rel="stylesheet"> 
+    <script>
+      if (localStorage.getItem('dark-mode') === 'true') {
+        document.documentElement.classList.add('dark-mode'); // Apply dark mode immediately
+      }
+    </script>
+    <link rel="stylesheet" href="css/style.css">  
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js"></script>
+    <script type="module" src="js/main.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
@@ -60,6 +67,9 @@
         </nav>
     </header>
     <main>
+      <div class="dark-mode-container">
+        <button id="dark-mode-toggle" class="dark-mode-toggle">Toggle Dark Mode</button>
+      </div>
         <h1>My PlanPal Calendar</h1>
         <div id="calendar"></div>
     </main>

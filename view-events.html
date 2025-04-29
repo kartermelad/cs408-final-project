@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Events - PlanPal</title>
+    <script>
+        if (localStorage.getItem('dark-mode') === 'true') {
+          document.documentElement.classList.add('dark-mode'); // Apply dark mode immediately
+        }
+      </script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body id="view-events-page">

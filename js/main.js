@@ -19,6 +19,30 @@ function loaded() {
     if (path.includes("event-details.html")) {
         loadEventDetails();
     }
+
+    setupDarkModeToggle();
+}
+
+// Toggles from light mode to dark mode
+function setupDarkModeToggle() {
+    const toggleButton = document.getElementById("dark-mode-toggle");
+    if (!toggleButton) return;
+
+    const isDarkMode = document.documentElement.classList.contains("dark-mode");
+    if (isDarkMode) {
+        toggleButton.textContent = "Switch to Light Mode";
+    } else {
+        toggleButton.textContent = "Switch to Dark Mode";
+    }
+
+    toggleButton.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark-mode");
+
+        const darkModeEnabled = document.documentElement.classList.contains("dark-mode");
+        localStorage.setItem("dark-mode", darkModeEnabled);
+
+        toggleButton.textContent = darkModeEnabled ? "Switch to Light Mode" : "Switch to Dark Mode";
+    });
 }
 
 // Set up the Add Event form
@@ -34,15 +58,23 @@ function setupAddEventForm() {
 
 // Add a new event
 function addEvent() {
-    const id = Math.floor(1000000000 + Math.random() * 9000000000).toString();
-    const title = document.getElementById("title").value;
-    const date = document.getElementById("date").value;
-    const startTime = document.getElementById("startTime").value;
-    const endTime = document.getElementById("endTime").value;
-    const location = document.getElementById("location").value;
-    const description = document.getElementById("description").value;
+    const title = document.getElementById("title").value.trim();
+    const date = document.getElementById("date").value.trim();
+    const startTime = document.getElementById("startTime").value.trim();
+    const endTime = document.getElementById("endTime").value.trim();
+    const location = document.getElementById("location").value.trim();
+    const description = document.getElementById("description").value.trim();
 
     const messageEl = document.getElementById("message");
+
+    if (!title || !date || !startTime || !endTime) {
+        messageEl.textContent = "Please fill in all required fields.";
+        messageEl.style.color = "red";
+        return;
+    }
+
+    const id = Math.floor(1000000000 + Math.random() * 9000000000).toString();
+    const eventData = { id, title, date, startTime, endTime, location, description };
 
     const xhr = new XMLHttpRequest();
     xhr.open("PUT", "https://f18r15nee0.execute-api.us-west-1.amazonaws.com/items");
@@ -58,31 +90,30 @@ function addEvent() {
             messageEl.style.color = "red";
         }
 
-        // Clear the message after 3 seconds
         setTimeout(() => {
             messageEl.textContent = "";
         }, 3000);
     });
 
-    const eventData = { id, title, date, startTime, endTime, location, description };
     xhr.send(JSON.stringify(eventData));
 }
 
 // Load all events into a table
 function loadEvents() {
+    const tableBody = document.getElementById("event-list")?.querySelector("tbody");
+    if (!tableBody) return;
+
     const xhr = new XMLHttpRequest();
     xhr.addEventListener("load", function () {
         if (xhr.status === 200) {
             const events = JSON.parse(xhr.response);
 
-            // Sort events by date and time
             events.sort((a, b) => {
                 const dateA = new Date(`${a.date}T${a.startTime}`);
                 const dateB = new Date(`${b.date}T${b.startTime}`);
-                return dateA - dateB; // Sort in ascending order
+                return dateA - dateB;
             });
 
-            const tableBody = document.getElementById("event-list").querySelector("tbody");
             tableBody.innerHTML = "";
 
             events.forEach(event => {
@@ -120,13 +151,14 @@ function formatTime(time) {
 // Set up the event filter for the search bar
 function setupEventFilter() {
     const searchBar = document.getElementById("search-bar");
-    const tableBody = document.getElementById("event-list").querySelector("tbody");
+    const tableBody = document.getElementById("event-list")?.querySelector("tbody");
+    if (!searchBar || !tableBody) return;
 
     searchBar.addEventListener("input", function () {
         const filterText = searchBar.value.toLowerCase();
 
         Array.from(tableBody.rows).forEach(row => {
-            const rowText = Array.from(row.cells).map(cell => cell.textContent.toLowerCase()).join(" ");           
+            const rowText = Array.from(row.cells).map(cell => cell.textContent.toLowerCase()).join(" ");
             row.style.display = rowText.includes(filterText) ? "" : "none";
         });
     });
@@ -174,7 +206,6 @@ function deleteEvent(id) {
             messageEl.style.color = "red";
         }
 
-        // Clear the message after 3 seconds
         setTimeout(() => {
             messageEl.textContent = "";
         }, 3000);
