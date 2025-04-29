@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid/main.min.css" rel="stylesheet"> 
     <script>
       if (localStorage.getItem('dark-mode') === 'true') {
-        document.documentElement.classList.add('dark-mode'); // Apply dark mode immediately
+        document.documentElement.classList.add('dark-mode');
       }
     </script>
     <link rel="stylesheet" href="css/style.css">  
@@ -68,7 +68,9 @@
     </header>
     <main>
       <div class="dark-mode-container">
-        <button id="dark-mode-toggle" class="dark-mode-toggle">Toggle Dark Mode</button>
+        <button id="dark-mode-toggle" class="btn liquid">
+          <span>Toggle Dark Mode</span>
+        </button>
       </div>
         <h1>My PlanPal Calendar</h1>
         <div id="calendar"></div>
